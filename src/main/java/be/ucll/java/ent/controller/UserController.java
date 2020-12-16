@@ -13,14 +13,15 @@ import java.util.List;
 /**
  * Unlike other classes, this class must have an instance PER LOGGED IN USER or browser session
  * It therefore specifies a scope.
- *   Either you wannt to see a login page per browser session AND per tab within the browser: @UIScope
+ *   Either you want to see a login page per browser session AND per tab within the browser: @UIScope
  *   Either you just want to see the login page per browser session: @VaadinSessionScope
  */
-@VaadinSessionScope
+@VaadinSessionScope // STATEFULL CONTROLLER!
 @Controller
 public class UserController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    // Statefull data. Verschillend per browser sessie
     private UserDTO loggedInUser;
 
     private static List<UserDTO> users;
