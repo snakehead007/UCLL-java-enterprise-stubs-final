@@ -1,6 +1,8 @@
 package be.ucll.java.ent.repository;
 
 import be.ucll.java.ent.model.StudentEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 @Component
 public class StudentDAO implements Dao<StudentEntity> {
+  Logger logger = LoggerFactory.getLogger(StudentDAO.class);
 
     @PersistenceContext
     private EntityManager em;
@@ -77,6 +80,8 @@ public class StudentDAO implements Dao<StudentEntity> {
                 if (voornaam != null && voornaam.trim().length() > 0) {
                     queryString += "and lower(s.voornaam) like '%" + voornaam.toLowerCase().trim() + "%' ";
                 }
+
+                logger.debug("getStudents, query: " + queryString);
 
                 // System.out.println("Query: " + queryString);
                 Query query = em.createQuery(queryString);

@@ -76,4 +76,15 @@ public class UserDTO implements Serializable {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "userid='" + userid + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
+    }
 }

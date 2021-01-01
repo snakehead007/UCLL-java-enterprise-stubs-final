@@ -79,4 +79,14 @@ public class InschrijvingEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(id, student, leermodule, betaald);
     }
+
+    @Override
+    public String toString() {
+        return "InschrijvingEntity{" +
+                "id=" + id +
+                ", betaald=" + betaald +
+                ", student=" + student +
+                ", leermodule=" + leermodule +
+                '}';
+    }
 }

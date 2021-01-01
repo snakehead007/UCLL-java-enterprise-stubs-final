@@ -1,6 +1,8 @@
 package be.ucll.java.ent.repository;
 
 import be.ucll.java.ent.model.LeermoduleEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 @Component
 public class LeermoduleDAO implements Dao<LeermoduleEntity> {
+    Logger logger = LoggerFactory.getLogger(LeermoduleDAO.class);
 
     @PersistenceContext
     private EntityManager em;
@@ -69,6 +72,8 @@ public class LeermoduleDAO implements Dao<LeermoduleEntity> {
             try {
                 // JPQL = Java Persistence Query Language
                 String queryString = "select l from LeermoduleEntity l where lower(l.code) like '%" + code.toLowerCase().trim() + "%' ";
+                logger.debug("getStudents, query: " + queryString);
+
                 Query query = em.createQuery(queryString);
                 lst = query.getResultList();
             } catch (NoResultException e) {

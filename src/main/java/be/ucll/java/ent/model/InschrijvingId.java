@@ -54,5 +54,13 @@ public class InschrijvingId implements java.io.Serializable {
     public int hashCode() {
         return Objects.hash(student_id, leermodule_id);
     }
+
+    @Override
+    public String toString() {
+        return "InschrijvingId{" +
+                "student_id=" + student_id +
+                ", leermodule_id=" + leermodule_id +
+                '}';
+    }
 }
 
