@@ -8,6 +8,7 @@
 
 #aligneer-knop-rechts {
     margin-left: auto;
+    margin-right: 5px;
 }
 
 /* As copied from https://demo.vaadin.com/lumo-editor/  */
