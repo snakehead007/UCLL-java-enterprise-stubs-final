@@ -84,7 +84,7 @@ public class InschrijvingController {
     public InschrijvingDTO getInschrijving(long student_id, long leermodule_id) throws IllegalArgumentException {
         if (student_id <= 0) throw new RuntimeException("Inschrijving verwijderen gefaaald. Student ID ontbreekt");
         if (leermodule_id <= 0)
-            throw new RuntimeException("Inschrijving verwijderen gefaaald. Leermodule ID ontbreekt");
+            throw new RuntimeException("Inschrijving verwijderen gefaald. Leermodule ID ontbreekt");
 
         Optional<InschrijvingEntity> opt = idao.get(student_id, leermodule_id);
         if (opt.isPresent()) {

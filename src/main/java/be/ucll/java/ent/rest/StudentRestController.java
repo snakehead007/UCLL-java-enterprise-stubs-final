@@ -31,7 +31,7 @@ public class StudentRestController {
                 return new ResponseEntity<String>("No students found for name search term", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<String>("An error has occured", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("An error has occurred", HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -50,7 +50,7 @@ public class StudentRestController {
                 return new ResponseEntity<String>("No students found for name search term", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<String>("An error has occured", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("An error has occurred", HttpStatus.BAD_REQUEST);
         }
     }
 
