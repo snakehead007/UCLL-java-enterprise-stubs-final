@@ -1,7 +1,10 @@
 package be.ucll.java.ent.controller;
 
+import be.ucll.java.ent.domain.InschrijvingDTO;
 import be.ucll.java.ent.domain.StudentDTO;
+import be.ucll.java.ent.model.InschrijvingEntity;
 import be.ucll.java.ent.model.StudentEntity;
+import be.ucll.java.ent.repository.InschrijvingDAO;
 import be.ucll.java.ent.repository.StudentDAO;
 import be.ucll.java.ent.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -29,6 +32,9 @@ public class StudentController {
 
     @Autowired
     private StudentDAO dao;
+
+    @Autowired
+    private InschrijvingDAO idao;
 
     @Autowired
     private StudentRepository studRepo;
@@ -142,7 +148,11 @@ public class StudentController {
         // If not the thrown IllegalArgumentException exits out of this method
         getStudentById(studentId);
 
-        // TODO Check of er inschrijvingen zijn voor student. Dan best niet verwijderen.
+        // Controleer of de student is ingeschreven op bepaalde leermodules
+        List<InschrijvingEntity> inschr = idao.getInschrijvingenVoorStudentId(studentId);
+        if (inschr != null && inschr.size() > 0) {
+            throw new IllegalArgumentException("Student heeft inschrijvingen en kan daardoor niet verwijderd worden");
+        }
 
         // If all is good effectively delete
         long timestamp = System.currentTimeMillis();
