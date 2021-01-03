@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Inschrijving")
-public class InschrijvingEntity implements Serializable {
+public class InschrijvingEntity extends StubsEntity implements Serializable {
 
     @EmbeddedId
     private InschrijvingId id;

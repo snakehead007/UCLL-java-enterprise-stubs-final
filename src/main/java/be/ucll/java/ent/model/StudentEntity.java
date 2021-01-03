@@ -9,11 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Student")
-@NamedQueries({
-        @NamedQuery(name = "Student.getAll", query = "SELECT e FROM StudentEntity e ORDER BY e.id"),
-        @NamedQuery(name = "Student.countAll", query = "SELECT count(e) FROM StudentEntity e")
-})
-public class StudentEntity implements Serializable {
+public class StudentEntity extends StubsEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sseq")

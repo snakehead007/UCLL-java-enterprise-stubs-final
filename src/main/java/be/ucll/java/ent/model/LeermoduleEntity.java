@@ -7,11 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Leermodule")
-@NamedQueries({
-        @NamedQuery(name = "Leermodule.getAll", query = "SELECT e FROM LeermoduleEntity e ORDER BY e.id"),
-        @NamedQuery(name = "Leermodule.countAll", query = "SELECT count(e) FROM LeermoduleEntity e")
-})
-public class LeermoduleEntity implements Serializable {
+public class LeermoduleEntity extends StubsEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lmseq")
