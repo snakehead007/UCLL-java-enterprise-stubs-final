@@ -1,29 +1,40 @@
 package be.ucll.java.ent.domain;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDTO implements Serializable {
 
-    private String userid;
-    private String password;
+    private final String userid;
+    private final String password;
     private String firstName;
     private String lastName;
-    private boolean isAdmin;
+    private List<Role> roles;
 
-    public UserDTO(String userid, String password) {
+    public UserDTO(@NotNull String userid, @NotNull String password) {
         this.userid = userid;
         this.password = password;
         firstName = "Ongeïdentificeerde";
         lastName = "gebruiker";
-        isAdmin = false;
+        roles = new ArrayList<>(1);
+        roles.add(Role.USER);
     }
 
-    public UserDTO(String userid, String password, String firstName, String lastName, boolean isAdmin) {
+    public UserDTO(@NotNull String userid, @NotNull String password, String firstName, String lastName, List<Role> roles) {
         this.userid = userid;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.isAdmin = isAdmin;
+
+        if (roles == null){
+            roles = new ArrayList<>(1);
+            roles.add(Role.USER);
+        } else {
+            this.roles = roles;
+            if (!roles.contains(Role.USER)) this.roles.add(Role.USER);
+        }
     }
 
     public String getFullName() {
@@ -50,29 +61,17 @@ public class UserDTO implements Serializable {
         return userid;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+        return roles != null && roles.contains(Role.ADMIN);
     }
 
     public boolean equals(Object o) {
         if (o instanceof UserDTO) {
-            return ((UserDTO) o).getUserid() == getUserid();
+            return ((UserDTO) o).getUserid().equals(getUserid());
         }
         return false;
     }
@@ -84,7 +83,7 @@ public class UserDTO implements Serializable {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", isAdmin=" + isAdmin +
+                ", roles=" + roles +
                 '}';
     }
 }

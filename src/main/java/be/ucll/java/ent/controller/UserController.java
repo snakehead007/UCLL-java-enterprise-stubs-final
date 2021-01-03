@@ -1,5 +1,6 @@
 package be.ucll.java.ent.controller;
 
+import be.ucll.java.ent.domain.Role;
 import be.ucll.java.ent.domain.UserDTO;
 import com.vaadin.flow.spring.annotation.UIScope;
 import com.vaadin.flow.spring.annotation.VaadinSessionScope;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,9 +29,9 @@ public class UserController {
     private static List<UserDTO> users;
 
     static {
-        users = new ArrayList<UserDTO>(2);
-        users.add(new UserDTO("admin", "admin", "System", "Administrator", true));
-        users.add(new UserDTO("user", "user", "Some", "User", false));
+        users = new ArrayList<>(2);
+        users.add(new UserDTO("admin", "admin", "System", "Administrator", Arrays.asList(Role.USER, Role.ADMIN)));
+        users.add(new UserDTO("user", "user", "Some", "User", null));
     }
 
     public UserDTO authenticateUser(UserDTO unauthenticateduser) {
@@ -44,8 +46,7 @@ public class UserController {
     }
 
     public boolean isUserSignedIn() {
-        if (loggedInUser != null) return true;
-        return false;
+        return loggedInUser != null;
     }
 
     public UserDTO getUser() {
