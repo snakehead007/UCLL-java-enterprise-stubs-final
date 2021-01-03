@@ -35,9 +35,9 @@ public class LoginView extends VerticalLayout {
 
         // Locale derived from the Browser language settings
         loc = VaadinSession.getCurrent().getLocale();
-        // For testing purposes
+        // For testing purposes:
         // loc = new Locale("fr");
-        logger.debug(loc.toString());
+        logger.debug("Browser/Session locale: " + loc.toString());
 
         LoginI18n i18n = LoginI18n.createDefault();
         i18n.getForm().setTitle(messageSrc.getMessage("app.title", null, loc));
@@ -52,13 +52,12 @@ public class LoginView extends VerticalLayout {
             UserDTO loginUser = userCtrl.authenticateUser(new UserDTO(e.getUsername(), e.getPassword()));
             if (loginUser == null) {
                 frmLogin.setError(true);
-                logger.warn("Failed login attempt for user with id: " + e.getUsername());
+                logger.warn("Failed login attempt for user with id: " + (e.getUsername() != null ? e.getUsername() : "<undefined>"));
             } else {
                 userCtrl.setUser(loginUser);
-                getUI().ifPresent(ui -> ui.navigate("main"));
                 logger.info("User '" + loginUser.getUserid() + "' successfully authenticated");
+                getUI().ifPresent(ui -> ui.navigate("main"));
             }
-
         });
 
         this.add(frmLogin);
