@@ -1,6 +1,5 @@
 package be.ucll.java.ent.controller;
 
-import be.ucll.java.ent.domain.InschrijvingDTO;
 import be.ucll.java.ent.domain.StudentDTO;
 import be.ucll.java.ent.model.InschrijvingEntity;
 import be.ucll.java.ent.model.StudentEntity;
@@ -21,8 +20,6 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static org.springframework.context.i18n.LocaleContextHolder.getLocale;
 
 @Controller
 @Transactional
