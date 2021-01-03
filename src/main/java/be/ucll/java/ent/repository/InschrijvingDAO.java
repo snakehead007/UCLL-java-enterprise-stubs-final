@@ -3,6 +3,7 @@ package be.ucll.java.ent.repository;
 import be.ucll.java.ent.model.InschrijvingEntity;
 import be.ucll.java.ent.model.InschrijvingId;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Repository
 public class InschrijvingDAO {
 
     @PersistenceContext
