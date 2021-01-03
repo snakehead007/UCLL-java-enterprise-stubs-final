@@ -30,8 +30,8 @@ public class UserController {
 
     static {
         users = new ArrayList<>(2);
-        users.add(new UserDTO("admin", "admin", "System", "Administrator", Arrays.asList(Role.USER, Role.ADMIN)));
-        users.add(new UserDTO("user", "user", "Some", "User", null));
+        users.add(new UserDTO("admin", "StubsAdminUCLL#123", "System", "Administrator", Arrays.asList(Role.USER, Role.ADMIN)));
+        users.add(new UserDTO("user", "StubsUserUCLL#123", "Some", "User", null));
     }
 
     public UserDTO authenticateUser(UserDTO unauthenticateduser) {
