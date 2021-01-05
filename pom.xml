@@ -172,10 +172,10 @@
             <version>2.3.0</version>
         </dependency>
         <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>  		
+            <groupId>javax.jms</groupId>
+            <artifactId>javax.jms-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -208,6 +208,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sources>
+                        <!-- Path to the XSD to generate Java classes from -->
+                        <source>src/main/resources/students.xsd</source>
+                    </sources>
+                    <!-- The Java package name under which the generated Java classes will be stored -->
+                    <packageName>be.ucll.java.ent.soap.model.v1</packageName>
+                    <!-- root directory in the project of all Java classes -->
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <!-- Set this to false or ALL Java classes in the output directory will be deleted -->
+                    <clearOutputDir>false</clearOutputDir>
+                </configuration>
+            </plugin>			
         </plugins>
     </build>
     <profiles>
