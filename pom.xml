@@ -237,7 +237,7 @@
     </build>
     <profiles>
         <profile>
-            <!-- Production mode is activated using -Pproduction -->
+            <!-- Production mode is activated using -Paws -->
             <id>aws</id>
             <properties>
                 <vaadin.productionMode>true</vaadin.productionMode>
