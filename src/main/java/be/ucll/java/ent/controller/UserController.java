@@ -38,7 +38,7 @@ public class UserController {
         for (UserDTO user : users) {
             if (user.getUserid().equalsIgnoreCase(unauthenticateduser.getUserid()) &&
                     user.getPassword().equals(unauthenticateduser.getPassword())) {
-                logger.info("User succesfully authenticated as '" + user.getFullName() + "'");
+                logger.info("User succesfully authenticated as '" + (user != null && user.getFullName() != null ? user.getFullName() : "<unknown>") + "'");
                 return user;
             }
         }

@@ -2,6 +2,8 @@ package be.ucll.java.ent.rest;
 
 import be.ucll.java.ent.controller.StudentController;
 import be.ucll.java.ent.domain.StudentDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/rest")
 public class StudentRestController {
+    private Logger logger = LoggerFactory.getLogger(StudentRestController.class);
 
     @Autowired
     private StudentController studentenMngr;
@@ -21,6 +24,8 @@ public class StudentRestController {
     public ResponseEntity getStudent(@RequestParam(value = "name", defaultValue = "") String name) {
 
         try {
+            logger.debug("REST service input param name " + name);
+
             List<StudentDTO> students = studentenMngr.getStudentsByName(name);
             if (students != null && students.size() > 0) {
                 StudentsList sl = new StudentsList();
