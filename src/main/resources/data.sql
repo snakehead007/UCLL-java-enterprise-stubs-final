@@ -1,0 +1,2 @@
+INSERT INTO Leermodule (code, beschrijving, schooljaar) values ('MGP16A', 'Java Mobile', '2020-21');
+INSERT INTO Leermodule (code, beschrijving, schooljaar) values ('MGP17A', 'Java Enterprise', '2020-21');
